@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Wrestling Shoes Guide | Popular Models by Price & Region</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .intro {
+            padding: 40px;
+            background: #f8f9fa;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .intro h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .category {
+            padding: 40px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .category:last-child {
+            border-bottom: none;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+        }
+        
+        .budget .category-header { border-color: #28a745; }
+        .midrange .category-header { border-color: #ffc107; }
+        .elite .category-header { border-color: #dc3545; }
+        
+        .category-header h2 {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+        
+        .budget .category-header h2 { color: #28a745; }
+        .midrange .category-header h2 { color: #ffc107; }
+        .elite .category-header h2 { color: #dc3545; }
+        
+        .price-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .shoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .shoe-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .shoe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+        
+        .shoe-card h3 {
+            color: #1e3c72;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .shoe-card .brand {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .shoe-card .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #28a745;
+            margin: 10px 0;
+        }
+        
+        .shoe-card .features {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .shoe-card .features li {
+            margin: 8px 0;
+            color: #555;
+        }
+        
+        .regions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .region-badge {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #495057;
+        }
+        
+        .region-badge.popular {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .regional-section {
+            background: #f8f9fa;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .regional-section h2 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 2em;
+        }
+        
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .region-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .region-card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .region-card .top-brands {
+            margin-top: 10px;
+        }
+        
+        .region-card .top-brands span {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 4px 10px;
+            border-radius: 8px;
+            margin: 3px;
+            font-size: 0.9em;
+        }
+        
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.9;
+        }
+        
+        .champion-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .champion-note strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🥇 Elite Wrestling Shoes Guide</h1>
+            <p>Popular Models Among Professional & Olympic Wrestlers</p>
+        </header>
+        
+        <div class="intro">
+            <h2>About This Guide</h2>
+            <p>This comprehensive guide features wrestling shoes popular among elite wrestlers worldwide, categorized by price range and regional popularity. The shoes listed here are worn by NCAA champions, Olympic medalists, and professional wrestlers at the highest levels of competition.</p>
+        </div>
+        
+        <!-- BUDGET CATEGORY -->
+        <div class="category budget">
+            <div class="category-header">
+                <h2>Budget ($45-80)</h2>
+                <span class="price-badge">Entry Level</span>
+            </div>
+            
+            <div class="shoes-grid">
+                <div class="shoe-card">
+                    <div class="brand">ASICS</div>
+                    <h3>Matflex 7</h3>
+                    <div class="price">$52-70</div>
+                    <ul class="features">
+                        <li>Excellent traction with aggressive outsole</li>
+                        <li>Wider toe box for comfort</li>
+                        <li>EVA midsole for cushioning</li>
+                        <li>Mesh upper for breathability</li>
+                        <li>Perfect for beginners & casual wrestlers</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                        <span class="region-badge">Asia</span>
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">ASICS</div>
+                    <h3>Snapdown 4</h3>
+                    <div class="price">$65-80</div>
+                    <ul class="features">
+                        <li>Synthetic leather upper</li>
+                        <li>Open mesh underlays</li>
+                        <li>Shoelace garage for secure fit</li>
+                        <li>Durable and reliable</li>
+                        <li>Great value for competitive practice</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge popular">Europe</span>
+                        <span class="region-badge">Asia</span>
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">Adidas</div>
+                    <h3>HVC 2</h3>
+                    <div class="price">$70</div>
+                    <ul class="features">
+                        <li>Lightweight synthetic upper</li>
+                        <li>Consistent board construction</li>
+                        <li>Excellent grip and traction</li>
+                        <li>Affordable for beginners</li>
+                        <li>Available in multiple colors</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                        <span class="region-badge">Russia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MID-RANGE CATEGORY -->
+        <div class="category midrange">
+            <div class="category-header">
+                <h2>Mid-Range ($80-140)</h2>
+                <span class="price-badge">Competitive</span>
+            </div>
+            
+            <div class="shoes-grid">
+                <div class="shoe-card">
+                    <div class="brand">ASICS</div>
+                    <h3>Aggressor 5/6</h3>
+                    <div class="price">$90-155</div>
+                    <ul class="features">
+                        <li>Top-rated in wrestler surveys (16 votes)</li>
+                        <li>GEL cushioning technology</li>
+                        <li>Superior ankle support</li>
+                        <li>Excellent for international competitions</li>
+                        <li>Breathable mesh with durability</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge popular">Russia</span>
+                        <span class="region-badge popular">Iran</span>
+                        <span class="region-badge popular">Europe</span>
+                    </div>
+                    <div class="champion-note">
+                        <strong>⭐ Most Popular:</strong> #1 current buy among elite wrestlers worldwide
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">Nike</div>
+                    <h3>Inflict 3/4</h3>
+                    <div class="price">$105-110</div>
+                    <ul class="features">
+                        <li>13 votes in elite wrestler survey</li>
+                        <li>Flyknit upper technology</li>
+                        <li>Lightweight design for speed</li>
+                        <li>Superior traction and grip</li>
+                        <li>Highly collectible among pros</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                        <span class="region-badge">Asia</span>
+                    </div>
+                    <div class="champion-note">
+                        <strong>🥇 Olympic Gold:</strong> Jordan Burroughs wore red-white-blue version for 2012 Olympic gold
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">Adidas</div>
+                    <h3>Combat Speed 4/5</h3>
+                    <div class="price">$67-95</div>
+                    <ul class="features">
+                        <li>Sprint Frame outsole technology</li>
+                        <li>Climacool breathability</li>
+                        <li>Explosive movement support</li>
+                        <li>Athlete-endorsed flexibility</li>
+                        <li>Multiple colorways available</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge popular">Europe</span>
+                        <span class="region-badge">Russia</span>
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">ASICS</div>
+                    <h3>Cael V7.0</h3>
+                    <div class="price">$100-130</div>
+                    <ul class="features">
+                        <li>8 eyelets for customizable fit</li>
+                        <li>Named after Cael Sanderson</li>
+                        <li>Snug fit like a "second skin"</li>
+                        <li>Ideal for varied wrestling styles</li>
+                        <li>Split sole design</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                    </div>
+                    <div class="champion-note">
+                        <strong>🏆 Legend:</strong> Named after 4x NCAA Champion & Olympic Gold Medalist Cael Sanderson
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">Nike</div>
+                    <h3>Freek</h3>
+                    <div class="price">$95-140</div>
+                    <ul class="features">
+                        <li>Dynamic Fit technology</li>
+                        <li>Articulated rubber sole</li>
+                        <li>Enhanced flexibility</li>
+                        <li>Modern comfort design</li>
+                        <li>Popular among younger athletes</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                        <span class="region-badge">Asia</span>
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">RUDIS</div>
+                    <h3>Colt 3.0/4.0</h3>
+                    <div class="price">$99.99</div>
+                    <ul class="features">
+                        <li>American-made quality</li>
+                        <li>Innovative grip technology</li>
+                        <li>Emerging brand among elites</li>
+                        <li>Durable construction</li>
+                        <li>Responsive feel</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ELITE CATEGORY -->
+        <div class="category elite">
+            <div class="category-header">
+                <h2>Elite ($140-200+)</h2>
+                <span class="price-badge">Premium Performance</span>
+            </div>
+            
+            <div class="shoes-grid">
+                <div class="shoe-card">
+                    <div class="brand">ASICS</div>
+                    <h3>Dan Gable Ultraflex</h3>
+                    <div class="price">$250-1200</div>
+                    <ul class="features">
+                        <li>Historic championship model</li>
+                        <li>Ultra-lightweight construction</li>
+                        <li>Maximum flexibility</li>
+                        <li>Premium materials</li>
+                        <li>Collector's item (rare/vintage)</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                    </div>
+                    <div class="champion-note">
+                        <strong>🥇 Championship Legacy:</strong> Worn by Cael Sanderson for his final NCAA title and Jordan Burroughs for 2012 Olympic gold
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">ASICS</div>
+                    <h3>JB Elite V2.0</h3>
+                    <div class="price">$160-180</div>
+                    <ul class="features">
+                        <li>Jordan Burroughs signature model</li>
+                        <li>Elite performance technology</li>
+                        <li>Precision fit system</li>
+                        <li>Advanced traction pattern</li>
+                        <li>Multiple World Championship wins</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                    </div>
+                    <div class="champion-note">
+                        <strong>🌟 Champion's Choice:</strong> Original gold version worn by Jordan Burroughs for multiple World Championships
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">ASICS</div>
+                    <h3>Split Second 9</h3>
+                    <div class="price">$150-175</div>
+                    <ul class="features">
+                        <li>Extremely lightweight design</li>
+                        <li>Synthetic mesh upper</li>
+                        <li>Split sole for superior traction</li>
+                        <li>Multiple attractive colorways</li>
+                        <li>Elite competition ready</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                        <span class="region-badge">Asia</span>
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">RUDIS</div>
+                    <h3>JB Ultra</h3>
+                    <div class="price">$139-175</div>
+                    <ul class="features">
+                        <li>Premium construction</li>
+                        <li>Advanced grip technology</li>
+                        <li>Top-tier materials</li>
+                        <li>Elite athlete tested</li>
+                        <li>Modern innovation</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">Nike</div>
+                    <h3>Tawa SE</h3>
+                    <div class="price">$155</div>
+                    <ul class="features">
+                        <li>Latest Nike technology</li>
+                        <li>Premium comfort and fit</li>
+                        <li>Enhanced durability</li>
+                        <li>Modern aesthetic</li>
+                        <li>Competition-level performance</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge popular">USA</span>
+                        <span class="region-badge">Europe</span>
+                    </div>
+                </div>
+                
+                <div class="shoe-card">
+                    <div class="brand">Adidas</div>
+                    <h3>Adistar (Vintage)</h3>
+                    <div class="price">$250-350+</div>
+                    <ul class="features">
+                        <li>Rare collector's model</li>
+                        <li>Exceptional fit and sole</li>
+                        <li>Historic design</li>
+                        <li>Olympic legacy</li>
+                        <li>Limited availability</li>
+                    </ul>
+                    <div class="regions">
+                        <span class="region-badge">USA</span>
+                        <span class="region-badge">Europe</span>
+                    </div>
+                    <div class="champion-note">
+                        <strong>🥇 1996 Olympic Gold:</strong> Kendall Cross wore these for his Olympic victory
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- REGIONAL POPULARITY -->
+        <div class="regional-section">
+            <h2>🌍 Regional Popularity</h2>
+            <div class="region-grid">
+                <div class="region-card">
+                    <h3>🇺🇸 United States</h3>
+                    <p>The largest market for wrestling shoes, with NCAA and high school programs driving demand.</p>
+                    <div class="top-brands">
+                        <strong>Top Brands:</strong>
+                        <span>ASICS (72 votes)</span>
+                        <span>Nike (41 votes)</span>
+                        <span>Adidas (37 votes)</span>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Popular Models:</strong> Aggressor 5/6, Inflict 3/4, Combat Speed, Freeks</p>
+                </div>
+                
+                <div class="region-card">
+                    <h3>🇷🇺 Russia</h3>
+                    <p>Strong freestyle wrestling tradition with preference for durable, high-performance shoes.</p>
+                    <div class="top-brands">
+                        <strong>Top Brands:</strong>
+                        <span>ASICS</span>
+                        <span>Adidas</span>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Popular Models:</strong> Aggressors (international competitions), Combat Speed, HVC 2</p>
+                </div>
+                
+                <div class="region-card">
+                    <h3>🇮🇷 Iran</h3>
+                    <p>Elite freestyle wrestling nation with Olympic-level competition standards.</p>
+                    <div class="top-brands">
+                        <strong>Top Brands:</strong>
+                        <span>ASICS</span>
+                        <span>Adidas</span>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Popular Models:</strong> Aggressors (dominates international comps), Split Second 9</p>
+                </div>
+                
+                <div class="region-card">
+                    <h3>🇪🇺 Europe</h3>
+                    <p>Strong market across multiple countries with diverse wrestling styles (Greco-Roman and Freestyle).</p>
+                    <div class="top-brands">
+                        <strong>Top Brands:</strong>
+                        <span>ASICS</span>
+                        <span>Nike</span>
+                        <span>Adidas</span>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Popular Models:</strong> Aggressor 5/6, Snapdown 4, Combat Speed 4/5, Inflicts</p>
+                </div>
+                
+                <div class="region-card">
+                    <h3>🌏 Asia</h3>
+                    <p>Growing wrestling market with focus on Olympic programs and youth development.</p>
+                    <div class="top-brands">
+                        <strong>Top Brands:</strong>
+                        <span>ASICS</span>
+                        <span>Nike</span>
+                    </div>
+                    <p style="margin-top: 15px;"><strong>Popular Models:</strong> Matflex 7, Split Second 9, Freeks</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created February 2026 | Data compiled from wrestler surveys, retail analytics, and professional endorsements</p>
+            <p style="margin-top: 10px;">All prices are approximate retail values and may vary by retailer, colorway, and availability</p>
+        </footer>
+    </div>
+</body>
+</html>
